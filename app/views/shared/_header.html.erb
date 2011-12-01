@@ -1,0 +1,25 @@
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
+      <a class="brand" href="/">Manduks Depot</a>
+      <ul class="nav">
+        <li class="active"><a href="/">Store</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/orders">Orders</a></li>
+        <% unless @cart.line_items.empty? %>
+            <li>
+              <a class='' data-controls-modal="modal-cart" data-backdrop="true" data-keyboard="true"
+                 onclick="$('#cart-list').load('/carts/<%= session[:cart_id]%>')">
+                <span class="label notice">Cart</span>
+              </a>
+            </li>
+        <% end %>
+      </ul>
+      <form action="" class="pull-right">
+        <input class="input-small" type="text" placeholder="Username">
+        <input class="input-small" type="password" placeholder="Password">
+        <button class="btn" type="submit">Sign in</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<%= render 'tbar' %>
+<div class="container padding-top60">
+  <% flash.each do |name, message| %>
+      <div class="alert-message success fade in">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Success!</strong> <%= notice %> </p>
+      </div>
+  <% end %>
+  <div id="content" class="content"></div>
+  <%= render 'footer' %>
+</div>

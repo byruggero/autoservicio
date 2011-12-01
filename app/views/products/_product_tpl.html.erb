@@ -1,0 +1,6 @@
+<div class="span5">
+  <%= image_tag('http://placehold.it/90x90', :class => 'thumbnail') %>
+  <h2><%= @product.title %></h2>
+  <p><%= sanitize @product.description %></p>
+  <p><span class="label notice"><%= number_to_currency(@product.price) %></span></p>
+</div>
