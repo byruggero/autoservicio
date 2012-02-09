@@ -9,7 +9,9 @@
 //= require_tree .
 
 
-$(function(){
-/*ordenamos last tablas*/
-
+$(function() {
+  $("#search").live('keyup',function() {
+   $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
+   return false;
+  });
 });

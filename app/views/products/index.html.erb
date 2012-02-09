@@ -10,45 +10,17 @@
   <div id="content" class="content">
 
     <%= render :partial => "products/modal_form" %>
-    <table class="bordered-table zebra-striped" data-sortable="true">
-      <thead>
-      <tr>
-        <th class="no-border"></th>
-        <th class="no-border"></th>
-        <th class="no-border"></th>
-        <th class="no-border">
-          <button data-controls-modal="modal-form-<%= @formName %>" data-backdrop="false" data-keyboard="true" class="btn"
-                  onclick="$('#products-form').html(' ').load('<%= new_product_path%>');">Add Product
-          </button>
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @products.each do |product| %>
-          <tr>
-            <td>
-              <%= image_tag('http://placehold.it/90x90', :class => 'thumbnail') %>
-            </td>
-            <td>
-              <dl>
-                <dt><%= product.title %></dt>
-                <dd>
-                  <%= truncate(strip_tags(product.description), :length => 80) %>
-                </dd>
-              </dl>
-            </td>
-            <td><%= product.price %> </td>
-            <td>
-              <a href="#" class="label" data-controls-modal="modal-form-<%= @formName %>" data-backdrop="false"
-                 onclick="$('#products-form').html(' ').load('<%= product_path(product) %>');"> Show </a> |
-              <a href="#" class="label notice" data-controls-modal="modal-form-<%= @formName %>" data-backdrop="false"
-                 onclick="$('#products-form').html(' ').load('<%= edit_product_path(product)%>');"> Edit </a> |
-              <%= link_to 'Delete', product, :confirm => 'Are you sure?', :method => :delete, :class => 'label warning' %>
-            </td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
+
+    <%= form_tag products_path, :method => 'get', :id => "products_search" do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", :name => nil %>
+        </p>
+
+        <div id="products"><%= render 'products' %></div>
+    <% end %>
+
   </div>
   <%= render :partial => "shared/footer" %>
 </div>
+

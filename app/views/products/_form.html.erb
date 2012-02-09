@@ -18,6 +18,12 @@
     </div>
   </div>
   <div class="clearfix">
+    <%= f.label :category_id %>
+    <div class="input">
+    <%=f.collection_select :category_id, Category.all, :id, :name  %>
+    </div>
+  </div>
+  <div class="clearfix">
     <%= f.label :description %>
     <div class="input">
     <%= f.text_area :description,:rows=>10 %>

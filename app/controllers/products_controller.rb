@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.search(params[:search])
 
     #creamos una instancia de producto para que la vista pueda tener modal
     @product = Product.new
@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
+      format.js
     end
   end
 
