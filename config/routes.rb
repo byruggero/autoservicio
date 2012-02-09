@@ -1,4 +1,6 @@
 Store::Application.routes.draw do
+  resources :authentications
+
   resources :roles
 
   devise_for :users
@@ -8,6 +10,8 @@ Store::Application.routes.draw do
   resources :products
 
   root :to =>'products#index'
+
+  match '/auth/:provider/callback' => 'authentications#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
